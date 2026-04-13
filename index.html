@@ -47,17 +47,15 @@
       border-bottom-color: currentColor;
     }
 
-    a.btn-primary,
     a.btn-secondary,
     a.btn-ghost,
-    .resume-actions > a {
+    a.resume-download-btn {
       border-bottom: none;
     }
 
-    a.btn-primary:hover,
     a.btn-secondary:hover,
     a.btn-ghost:hover,
-    .resume-actions > a:hover {
+    a.resume-download-btn:hover {
       border-bottom: none;
     }
 
@@ -268,61 +266,32 @@
     }
 
     .resume-actions {
-      margin-top: 1.5rem;
-      margin-bottom: 0;
-    }
-
-    .resume-structured {
       margin-top: 0;
-      width: 100%;
+      margin-bottom: 0;
+      max-width: var(--max);
     }
 
-    /* Keep Experience / Education / Skills as three horizontal boxes sooner than generic .cols-3 */
-    .resume-structured .card-grid {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: 1fr;
-    }
-
-    @media (min-width: 640px) {
-      .resume-structured .card-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        align-items: stretch;
-      }
-    }
-
-    .resume-structured .surface-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-    }
-
-    .resume-structured .surface-card ul {
-      flex: 1;
-    }
-
-    .btn-primary,
-    .resume-actions > a {
+    .resume-download-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-family: inherit;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      padding: 0.55rem 1.1rem;
-      border-radius: 4px;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 0.85rem 1.75rem;
+      border-radius: 6px;
       border: 1px solid var(--text);
       background: var(--text);
       color: var(--bg);
       text-decoration: none;
       cursor: pointer;
-      transition: opacity 0.15s ease;
+      transition: opacity 0.15s ease, transform 0.12s ease;
     }
 
-    .btn-primary:hover,
-    .resume-actions > a:hover {
-      opacity: 0.88;
-      border-bottom-color: var(--text);
+    .resume-download-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
     }
 
     .btn-secondary {
@@ -552,10 +521,10 @@
           The thing that keeps the work interesting is that the surface keeps changing. From native apps to conversational AI agents, the definition of what a product even is keeps shifting underneath you. I try to stay deliberately outside my comfort zone, building in spaces that are genuinely new, where the right answer isn’t obvious yet.
         </p>
         <p>
-          <strong>Currently:</strong> Lyft Applied AI.
+          <strong>Currently:</strong> Senior Product Manager at Lyft, leading AI strategy within the rider experience.
         </p>
         <p>
-          <strong>Background:</strong> 7+ years in product; 10 years in tech. Before product: finance and operations leadership.
+          <strong>Background:</strong> Started in Finance and Operations, which shapes how I think about executive buy-in, opportunity sizing, and building for business growth.
         </p>
         <p>
           <strong>What I’m known for:</strong> Creating clarity where the playbook is thin, or the team is in uncharted territory. Leading with transparency, collaboration, intentional strategic thinking, and humour.
@@ -563,39 +532,8 @@
       </div>
 
       <div class="resume-nested">
-        <p class="section-label">Resume</p>
-        <div class="resume-structured">
-          <div class="card-grid">
-            <div class="surface-card">
-              <h3>Experience</h3>
-              <ul>
-                <li>Senior Product Manager, Lyft: Dec 2025&#8211;Present</li>
-                <li>Senior Product Manager, Loblaw Digital: Mar 2024&#8211;Dec 2025</li>
-                <li>Product Manager, Kijiji: Aug 2021&#8211;Jul 2023</li>
-                <li>Director, eCommerce &amp; Buyer Experience, How To Cake It: Jun 2020&#8211;Jul 2021</li>
-                <li>Business Operations Manager, Connected (Now Thoughtworks): Jan 2019&#8211;Apr 2020</li>
-              </ul>
-            </div>
-            <div class="surface-card">
-              <h3>Education</h3>
-              <ul>
-                <li>Bachelor of Commerce, Major in Finance: McGill University, 2017</li>
-              </ul>
-            </div>
-            <div class="surface-card">
-              <h3>Skills</h3>
-              <ul>
-                <li>0-to-1 Product Strategy</li>
-                <li>AI Integration &amp; Agentic Commerce</li>
-                <li>Experimentation &amp; A/B Testing</li>
-                <li>User Research &amp; Discovery</li>
-                <li>Cross-functional Leadership &amp; Executive Alignment</li>
-              </ul>
-            </div>
-          </div>
-        </div>
         <div class="resume-actions">
-          <a href="/resume.pdf" download="Kaelan_Forgues_Resume.pdf">Download Resume</a>
+          <a class="resume-download-btn" href="resume.pdf" download="Kaelan_Forgues_Resume.pdf" type="application/pdf">Download resume (PDF)</a>
         </div>
       </div>
     </div>
