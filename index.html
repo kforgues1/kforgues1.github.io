@@ -275,7 +275,6 @@
 
     .bio-narrative p {
       margin: 0 0 1.5rem;
-      max-width: var(--max);
       color: var(--text);
       font-size: 0.9375rem;
       line-height: 1.8;
@@ -505,52 +504,6 @@
       }
     }
 
-    /* Callout cards */
-    .callout-cards {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .callout-card {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.7rem 1rem;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      flex: 1;
-      min-width: 11rem;
-    }
-
-    .callout-icon {
-      font-size: 1rem;
-      color: var(--text-muted);
-      flex-shrink: 0;
-      width: 1.25rem;
-      text-align: center;
-      line-height: 1;
-    }
-
-    .callout-label {
-      display: block;
-      font-size: 0.6875rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.15rem;
-    }
-
-    .callout-text {
-      display: block;
-      font-size: 0.875rem;
-      color: var(--text);
-      font-weight: 500;
-    }
-
     /* Bio two-column layout */
     .bio-layout {
       display: grid;
@@ -563,6 +516,21 @@
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
+    }
+
+    .headshot-wrap {
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      border: 1px solid var(--border);
+    }
+
+    .headshot {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
 
     .sidebar-meta {
@@ -608,7 +576,7 @@
       color: var(--text);
       text-decoration: none;
       transition: background 0.15s ease, color 0.15s ease;
-      width: fit-content;
+      width: 100%;
     }
 
     .resume-outline-btn:hover {
@@ -658,37 +626,11 @@
     </div>
 
     <div class="tab-panel" id="panel-bio" role="tabpanel" aria-labelledby="tab-bio">
-      <div class="callout-cards">
-        <div class="callout-card">
-          <span class="callout-icon">◉</span>
-          <div>
-            <span class="callout-label">Currently</span>
-            <span class="callout-text">Senior PM, Lyft Applied AI</span>
-          </div>
-        </div>
-        <div class="callout-card">
-          <span class="callout-icon">↗</span>
-          <div>
-            <span class="callout-label">Background</span>
-            <span class="callout-text">Finance &amp; Ops → Product</span>
-          </div>
-        </div>
-        <div class="callout-card">
-          <span class="callout-icon">✦</span>
-          <div>
-            <span class="callout-label">Known for</span>
-            <span class="callout-text">0-to-1 AI &amp; consumer products</span>
-          </div>
-        </div>
-      </div>
       <div class="bio-layout">
         <div class="bio-main">
           <div class="bio-narrative">
             <p>
-              I’m a product leader who works across the full stack of the role, from framing a proposed feature grounded in data and business opportunity for the executive team, to staying in the details of what’s technically possible and what users actually experience with the working teams.
-            </p>
-            <p>
-              I started my career in Finance and Operations at tech startups and scale-ups, which built the foundation I still rely on today: how to think in tradeoffs, how to size opportunity honestly, how to evaluate whether a product direction is actually sustainable, and importantly, how to communicate product strategy in a language that executives and business leaders can understand and buy into.
+              I’m a product leader who works across the full stack of the role, from framing a proposed feature grounded in data and business opportunity for the executive team, to staying in the details of what’s technically possible and what users actually experience. I started my career in Finance and Operations at tech startups and scale-ups, which gave me the foundation I still rely on today: how to think in tradeoffs, size opportunity honestly, and communicate product strategy in a language that executives can understand and buy into.
             </p>
             <p>
               Over the last several years, I’ve built a track record shipping 0-to-1 products across two-sided marketplaces, AI, and consumer platforms. My approach is research-first and data-grounded. I don’t advocate for a direction until I understand the problem well enough to defend the solution to a skeptic. And I care about execution just as much as strategy: the best product thinking doesn’t count if it doesn’t ship, and the best products don’t count if users don’t love them.
@@ -699,7 +641,18 @@
           </div>
         </div>
         <aside class="bio-sidebar">
+          <div class="headshot-wrap">
+            <img src="headshot.jpg" alt="Kaelan Forgues" class="headshot" loading="lazy" />
+          </div>
           <div class="sidebar-meta">
+            <div class="sidebar-row">
+              <span class="sidebar-label">Currently</span>
+              <span class="sidebar-value">Senior PM, Lyft Applied AI</span>
+            </div>
+            <div class="sidebar-row">
+              <span class="sidebar-label">Background</span>
+              <span class="sidebar-value">Finance &amp; Operations → Product</span>
+            </div>
             <div class="sidebar-row">
               <span class="sidebar-label">Education</span>
               <span class="sidebar-value">BCom Finance, McGill 2017</span>
