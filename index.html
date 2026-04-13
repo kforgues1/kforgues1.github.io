@@ -25,10 +25,6 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
       font-family: "Inter", system-ui, -apple-system, sans-serif;
@@ -43,11 +39,23 @@
       color: var(--accent);
       text-decoration: none;
       border-bottom: 1px solid transparent;
-      transition: border-color 0.15s ease;
+      transition: border-color 0.15s ease, background 0.15s ease, opacity 0.15s ease;
     }
 
     a:hover {
       border-bottom-color: currentColor;
+    }
+
+    a.btn-primary,
+    a.btn-secondary,
+    a.btn-ghost {
+      border-bottom: none;
+    }
+
+    a.btn-primary:hover,
+    a.btn-secondary:hover,
+    a.btn-ghost:hover {
+      border-bottom: none;
     }
 
     .skip {
@@ -64,7 +72,6 @@
       left: 0.5rem;
     }
 
-    /* Store-style header */
     .site-header {
       position: sticky;
       top: 0;
@@ -91,38 +98,16 @@
       font-weight: 600;
       font-size: 0.95rem;
       letter-spacing: -0.02em;
-      border-bottom: none;
+      border: none;
+      background: none;
+      padding: 0;
+      font-family: inherit;
+      cursor: pointer;
+      color: var(--text);
     }
 
     .brand:hover {
-      border-bottom: none;
       opacity: 0.75;
-    }
-
-    .nav-primary {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      flex-wrap: wrap;
-    }
-
-    .nav-primary a {
-      display: block;
-      padding: 0.5rem 0.85rem;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      border-bottom: none;
-      color: var(--text);
-      border-radius: 4px;
-    }
-
-    .nav-primary a:hover {
-      background: rgba(17, 17, 17, 0.06);
     }
 
     .nav-actions {
@@ -139,12 +124,60 @@
       border-radius: 4px;
       color: var(--text);
       background: var(--bg-elevated);
-      border-bottom: 1px solid var(--border);
     }
 
     .btn-ghost:hover {
       border-color: var(--text);
       background: var(--bg);
+    }
+
+    /* Tab bar */
+    .tablist-wrap {
+      flex: 1;
+      min-width: min(100%, 20rem);
+    }
+
+    .tablist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+
+    .tablist button {
+      appearance: none;
+      font-family: inherit;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .tablist button:hover {
+      color: var(--text);
+      background: rgba(17, 17, 17, 0.05);
+    }
+
+    .tablist button[aria-selected="true"] {
+      color: var(--text);
+      background: var(--bg-elevated);
+      border-color: var(--border);
+      box-shadow: 0 1px 0 rgba(17, 17, 17, 0.04);
+    }
+
+    .tablist button:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 2px;
     }
 
     main {
@@ -174,12 +207,12 @@
       max-width: var(--max);
     }
 
-    section {
-      margin-bottom: 3rem;
+    .tab-panel {
+      margin-bottom: 0;
     }
 
-    section:last-of-type {
-      margin-bottom: 0;
+    .tab-panel[hidden] {
+      display: none;
     }
 
     .section-label {
@@ -198,67 +231,141 @@
       letter-spacing: -0.02em;
     }
 
-    .bio p {
+    .bio-narrative p {
       margin: 0 0 1rem;
       max-width: var(--max);
       color: var(--text);
     }
 
-    .bio p:last-child {
+    .bio-narrative p:last-child {
       margin-bottom: 0;
     }
 
-    .bio .note {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      font-style: italic;
+    .resume-nested {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
     }
 
-    .resume-block {
-      max-width: var(--max);
+    .resume-nested .section-title {
+      font-size: 1.05rem;
+      margin-bottom: 1.25rem;
     }
 
-    .resume-block p {
-      margin: 0 0 1rem;
-      color: var(--text-muted);
+    .resume-actions {
+      margin-bottom: 1.25rem;
     }
 
-    .resume-placeholder {
-      padding: 1.25rem 1.35rem;
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.55rem 1.1rem;
+      border-radius: 4px;
+      border: 1px solid var(--text);
+      background: var(--text);
+      color: var(--bg);
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.88;
+      border-bottom-color: var(--text);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.55rem 1.1rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
       background: var(--bg-elevated);
-      border: 1px dashed var(--border);
-      border-radius: 6px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
+      color: var(--text);
+      text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
     }
 
-    .resume-placeholder ul {
-      margin: 0.75rem 0 0;
-      padding-left: 1.25rem;
+    .btn-secondary:hover {
+      border-color: var(--text);
+      background: var(--bg);
+      border-bottom-color: var(--text);
     }
 
-    .resume-placeholder li {
-      margin-bottom: 0.35rem;
-    }
-
-    .projects-grid {
+    .card-grid {
       display: grid;
-      gap: 1.25rem;
+      gap: 1rem;
       grid-template-columns: 1fr;
     }
 
     @media (min-width: 640px) {
-      .projects-grid {
+      .card-grid.cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .card-grid.cols-3 {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (min-width: 900px) {
-      .projects-grid {
+      .card-grid.cols-3 {
         grid-template-columns: repeat(3, 1fr);
       }
     }
 
+    .surface-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.35rem;
+    }
+
+    .surface-card h3 {
+      margin: 0 0 0.65rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .surface-card ul {
+      margin: 0;
+      padding-left: 1.15rem;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .surface-card li {
+      margin-bottom: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    .surface-card li:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-note {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: var(--max);
+      margin: 0 0 1.5rem;
+      padding: 0.85rem 1rem;
+      background: rgba(17, 17, 17, 0.03);
+      border-radius: 6px;
+      border-left: 3px solid var(--border);
+    }
+
+    .work-card,
     .project-card {
       background: var(--bg-elevated);
       border: 1px solid var(--border);
@@ -267,6 +374,37 @@
       display: flex;
       flex-direction: column;
       min-height: 100%;
+    }
+
+    .work-card .company {
+      margin: 0 0 0.15rem;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .work-card .role {
+      margin: 0 0 0.25rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .work-card .period {
+      margin: 0 0 0.85rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    .work-card .desc {
+      margin: 0 0 1.1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      flex: 1;
+    }
+
+    .work-card .card-actions {
+      margin-top: auto;
     }
 
     .project-card h3 {
@@ -283,24 +421,48 @@
       flex: 1;
     }
 
-    .project-card .highlights-label {
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
       font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(17, 17, 17, 0.06);
+      color: var(--text-muted);
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 1rem;
+      max-width: var(--max);
+    }
+
+    .contact-card p {
+      margin: 0 0 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-card strong {
+      display: block;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-muted);
       margin-bottom: 0.35rem;
-    }
-
-    .project-card ul {
-      margin: 0;
-      padding-left: 1.1rem;
-      font-size: 0.8125rem;
-      color: var(--text);
-    }
-
-    .project-card li {
-      margin-bottom: 0.25rem;
     }
 
     .site-footer {
@@ -323,18 +485,18 @@
     @media (max-width: 520px) {
       .header-inner {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         padding-top: 0.85rem;
         padding-bottom: 0.85rem;
       }
 
-      .nav-primary {
+      .tablist-wrap {
+        order: 3;
         width: 100%;
-        justify-content: flex-start;
       }
 
       .nav-actions {
-        width: 100%;
+        align-self: flex-start;
       }
     }
   </style>
@@ -344,14 +506,25 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="#">Kaelan Forgues</a>
-      <nav aria-label="Primary">
-        <ul class="nav-primary">
-          <li><a href="#bio">Bio</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#projects">Projects</a></li>
-        </ul>
-      </nav>
+      <button type="button" class="brand" id="brand-home" aria-label="Kaelan Forgues, go to Bio">Kaelan Forgues</button>
+      <div class="tablist-wrap">
+        <nav aria-label="Site sections">
+          <ul class="tablist" role="tablist">
+            <li role="presentation">
+              <button type="button" role="tab" id="tab-bio" aria-selected="true" aria-controls="panel-bio">Bio</button>
+            </li>
+            <li role="presentation">
+              <button type="button" role="tab" id="tab-past" aria-selected="false" aria-controls="panel-past">Past Work</button>
+            </li>
+            <li role="presentation">
+              <button type="button" role="tab" id="tab-projects" aria-selected="false" aria-controls="panel-projects">Projects</button>
+            </li>
+            <li role="presentation">
+              <button type="button" role="tab" id="tab-contact" aria-selected="false" aria-controls="panel-contact">Contact</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
       <div class="nav-actions">
         <a class="btn-ghost" href="https://github.com/kforgues1" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
@@ -364,74 +537,144 @@
       <p class="tagline">Product strategy, e-commerce, and personalization — placeholder tagline; edit as you like.</p>
     </div>
 
-    <section id="bio" class="bio" aria-labelledby="bio-heading">
+    <div class="tab-panel" id="panel-bio" role="tabpanel" aria-labelledby="tab-bio">
       <p class="section-label">About</p>
-      <h2 id="bio-heading" class="section-title">Bio</h2>
-      <p>
-        I’m a product leader focused on strategy and go-to-market for digital commerce and loyalty. Most recently I’ve worked on e-commerce experiences and programs like PC Optimum, with earlier roles optimizing buyer journeys on marketplaces and in operations.
-      </p>
-      <p>
-        [Add a personal line here — where you live, what you’re building lately, or how you like to work with teams. This site is a single file; swap this paragraph anytime.]
-      </p>
-      <p class="note">
-        Summary adapted from public LinkedIn-style profile details; confirm wording on
-        <a href="https://www.linkedin.com/in/kaelanforgues/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
-      </p>
-    </section>
-
-    <section id="resume" aria-labelledby="resume-heading">
-      <p class="section-label">Experience</p>
-      <h2 id="resume-heading" class="section-title">Resume</h2>
-      <div class="resume-block">
+      <h2 class="section-title">Bio</h2>
+      <div class="bio-narrative">
         <p>
-          [Replace this block with a link to your PDF, or paste highlights below.]
+          I’m a product leader who moves comfortably between vision and execution — someone who can frame a problem for the business, align executives around a direction, and still stay grounded in what users actually need. My foundation is a Finance degree from <strong>McGill University</strong>, followed by early-career roles in <strong>Finance &amp; Operations</strong> at technology startups and scaleups. That background shaped how I think about tradeoffs, metrics, and sustainable growth.
         </p>
-        <div class="resume-placeholder">
-          <strong>Placeholder — your resume CTA</strong>
-          <ul>
-            <li>[Link: Download PDF]</li>
-            <li>[Or: 2–3 bullet wins you want visitors to see first]</li>
-            <li>[Or: Link to a full LinkedIn PDF export]</li>
-          </ul>
+        <p>
+          I’ve built a track record of shipping successful <strong>0-to-1 products</strong> by combining rigorous discovery with empathy for the people on the other side of the experience. I’m as comfortable speaking the language of the <strong>business and executive team</strong> as I am working with design and engineering to get something real into the market.
+        </p>
+      </div>
+
+      <div class="resume-nested">
+        <p class="section-label">Resume</p>
+        <h2 class="section-title">At a glance</h2>
+        <div class="resume-actions">
+          <a class="btn-primary" href="#">Download Resume</a>
+        </div>
+        <div class="card-grid cols-3">
+          <div class="surface-card">
+            <h3>Experience</h3>
+            <ul>
+              <li>[Role, company — dates]</li>
+              <li>[Role, company — dates]</li>
+              <li>[Add bullets or summary lines]</li>
+            </ul>
+          </div>
+          <div class="surface-card">
+            <h3>Education</h3>
+            <ul>
+              <li>Bachelor of Commerce, Finance — McGill University</li>
+              <li>[Additional credentials or programs]</li>
+            </ul>
+          </div>
+          <div class="surface-card">
+            <h3>Skills</h3>
+            <ul>
+              <li>[Product strategy &amp; GTM]</li>
+              <li>[Domain areas — e.g. e-commerce, loyalty]</li>
+              <li>[Tools — analytics, experimentation, etc.]</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section id="projects" aria-labelledby="projects-heading">
-      <p class="section-label">Work</p>
-      <h2 id="projects-heading" class="section-title">Projects</h2>
-      <div class="projects-grid">
-        <article class="project-card">
-          <h3>[Project title]</h3>
-          <p class="desc">[Short description of the problem, what you shipped, and the outcome. One or two sentences.]</p>
-          <p class="highlights-label">Technical highlights</p>
-          <ul>
-            <li>[Stack or approach — e.g. API design]</li>
-            <li>[Tooling — e.g. analytics, experimentation]</li>
-            <li>[Something you’d want a hiring manager to notice]</li>
-          </ul>
+    <div class="tab-panel" id="panel-past" role="tabpanel" aria-labelledby="tab-past" hidden>
+      <p class="section-label">Career</p>
+      <h2 class="section-title">Past Work</h2>
+      <p class="section-note">Work samples available upon request — some deliverables are proprietary or under NDA.</p>
+      <div class="card-grid cols-3">
+        <article class="work-card">
+          <h3 class="company">[Company name]</h3>
+          <p class="role">[Your title]</p>
+          <p class="period">[Start year] — [End year or Present]</p>
+          <p class="desc">[Brief description of scope, impact, or focus. What did you own? What changed because of your work?]</p>
+          <div class="card-actions">
+            <a class="btn-secondary" href="#">View Work</a>
+          </div>
         </article>
-        <article class="project-card">
-          <h3>[Project title]</h3>
-          <p class="desc">[What it does, who it’s for, and why it mattered.]</p>
-          <p class="highlights-label">Technical highlights</p>
-          <ul>
-            <li>[Highlight one]</li>
-            <li>[Highlight two]</li>
-            <li>[Highlight three]</li>
-          </ul>
+        <article class="work-card">
+          <h3 class="company">[Company name]</h3>
+          <p class="role">[Your title]</p>
+          <p class="period">[Start year] — [End year or Present]</p>
+          <p class="desc">[Brief description placeholder.]</p>
+          <div class="card-actions">
+            <a class="btn-secondary" href="#">View Work</a>
+          </div>
         </article>
-        <article class="project-card">
-          <h3>[Project title]</h3>
-          <p class="desc">[Optional third project — side project, work sample, or case study.]</p>
-          <p class="highlights-label">Technical highlights</p>
-          <ul>
-            <li>[Highlight one]</li>
-            <li>[Highlight two]</li>
-          </ul>
+        <article class="work-card">
+          <h3 class="company">[Company name]</h3>
+          <p class="role">[Your title]</p>
+          <p class="period">[Start year] — [End year or Present]</p>
+          <p class="desc">[Brief description placeholder.]</p>
+          <div class="card-actions">
+            <a class="btn-secondary" href="#">View Work</a>
+          </div>
         </article>
       </div>
-    </section>
+    </div>
+
+    <div class="tab-panel" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" hidden>
+      <p class="section-label">Personal</p>
+      <h2 class="section-title">Projects</h2>
+      <p style="margin: 0 0 1.5rem; max-width: var(--max); font-size: 0.9rem; color: var(--text-muted);">
+        Side projects and experiments — code and activity on
+        <a href="https://github.com/kforgues1" target="_blank" rel="noopener noreferrer">GitHub</a>.
+      </p>
+      <div class="card-grid cols-3">
+        <article class="project-card">
+          <h3>[Project name]</h3>
+          <p class="desc">[What it does and why you built it. One or two sentences.]</p>
+          <div class="tags">
+            <span class="tag">[Stack]</span>
+            <span class="tag">[Library]</span>
+          </div>
+          <a class="btn-secondary" href="https://github.com/kforgues1" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </article>
+        <article class="project-card">
+          <h3>[Project name]</h3>
+          <p class="desc">[Description placeholder.]</p>
+          <div class="tags">
+            <span class="tag">[Language]</span>
+            <span class="tag">[Framework]</span>
+            <span class="tag">[Other]</span>
+          </div>
+          <a class="btn-secondary" href="https://github.com/kforgues1" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </article>
+        <article class="project-card">
+          <h3>[Project name]</h3>
+          <p class="desc">[Optional third project — link to a specific repo later by changing the href above.]</p>
+          <div class="tags">
+            <span class="tag">[Tag]</span>
+            <span class="tag">[Tag]</span>
+          </div>
+          <a class="btn-secondary" href="https://github.com/kforgues1" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </article>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
+      <p class="section-label">Hello</p>
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-grid">
+        <div class="surface-card contact-card">
+          <strong>Email</strong>
+          <p><a href="mailto:you@example.com">you@example.com</a> — replace with your address.</p>
+        </div>
+        <div class="surface-card contact-card">
+          <strong>LinkedIn</strong>
+          <p><a href="https://www.linkedin.com/in/kaelanforgues/" target="_blank" rel="noopener noreferrer">linkedin.com/in/kaelanforgues</a></p>
+        </div>
+        <div class="surface-card contact-card">
+          <strong>GitHub</strong>
+          <p><a href="https://github.com/kforgues1" target="_blank" rel="noopener noreferrer">github.com/kforgues1</a></p>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -441,6 +684,80 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+      var panels = {
+        bio: document.getElementById("panel-bio"),
+        past: document.getElementById("panel-past"),
+        projects: document.getElementById("panel-projects"),
+        contact: document.getElementById("panel-contact"),
+      };
+
+      function showPanel(id) {
+        var map = {
+          "tab-bio": "bio",
+          "tab-past": "past",
+          "tab-projects": "projects",
+          "tab-contact": "contact",
+        };
+        var key = map[id];
+        if (!key) return;
+
+        tabs.forEach(function (tab) {
+          var selected = tab.id === id;
+          tab.setAttribute("aria-selected", selected ? "true" : "false");
+          tab.tabIndex = selected ? 0 : -1;
+        });
+
+        Object.keys(panels).forEach(function (k) {
+          var panel = panels[k];
+          if (k === key) {
+            panel.hidden = false;
+          } else {
+            panel.hidden = true;
+          }
+        });
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          showPanel(tab.id);
+        });
+      });
+
+      document.getElementById("brand-home").addEventListener("click", function () {
+        showPanel("tab-bio");
+        document.getElementById("tab-bio").focus();
+      });
+
+      var tablist = document.querySelector('[role="tablist"]');
+      if (tablist) {
+        tablist.addEventListener("keydown", function (e) {
+          var keys = { ArrowLeft: -1, ArrowRight: 1, Home: "home", End: "end" };
+          var action = keys[e.key];
+          if (action === undefined) return;
+
+          e.preventDefault();
+          var i = tabs.indexOf(document.activeElement);
+          if (i < 0) i = tabs.findIndex(function (t) { return t.getAttribute("aria-selected") === "true"; });
+          if (i < 0) i = 0;
+
+          var next;
+          if (action === "home") next = 0;
+          else if (action === "end") next = tabs.length - 1;
+          else {
+            next = i + action;
+            if (next < 0) next = tabs.length - 1;
+            if (next >= tabs.length) next = 0;
+          }
+          tabs[next].focus();
+          showPanel(tabs[next].id);
+        });
+      }
+
+      showPanel("tab-bio");
+    })();
   </script>
 </body>
 </html>
