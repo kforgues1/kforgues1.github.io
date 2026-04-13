@@ -50,6 +50,7 @@
     a.btn-secondary,
     a.btn-ghost,
     a.resume-download-btn,
+    a.resume-outline-btn,
     a.tablist-link {
       border-bottom: none;
     }
@@ -57,6 +58,7 @@
     a.btn-secondary:hover,
     a.btn-ghost:hover,
     a.resume-download-btn:hover,
+    a.resume-outline-btn:hover,
     a.tablist-link:hover {
       border-bottom: none;
     }
@@ -242,7 +244,7 @@
 
     .intro .tagline {
       margin: 0;
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
       max-width: var(--max);
     }
@@ -272,9 +274,11 @@
     }
 
     .bio-narrative p {
-      margin: 0 0 1rem;
+      margin: 0 0 1.5rem;
       max-width: var(--max);
       color: var(--text);
+      font-size: 0.9375rem;
+      line-height: 1.8;
     }
 
     .bio-narrative p:last-child {
@@ -500,6 +504,124 @@
         width: 100%;
       }
     }
+
+    /* Callout cards */
+    .callout-cards {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .callout-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 1rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      flex: 1;
+      min-width: 11rem;
+    }
+
+    .callout-icon {
+      font-size: 1rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      width: 1.25rem;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .callout-label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .callout-text {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Bio two-column layout */
+    .bio-layout {
+      display: grid;
+      grid-template-columns: 60fr 40fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .bio-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .sidebar-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .sidebar-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .sidebar-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .sidebar-value {
+      font-size: 0.875rem;
+      color: var(--text);
+    }
+
+    .resume-outline-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.6rem 1.1rem;
+      border-radius: 5px;
+      border: 1px solid var(--text);
+      background: transparent;
+      color: var(--text);
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease;
+      width: 100%;
+    }
+
+    .resume-outline-btn:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    @media (max-width: 640px) {
+      .bio-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -536,24 +658,60 @@
     </div>
 
     <div class="tab-panel" id="panel-bio" role="tabpanel" aria-labelledby="tab-bio">
-      <h2 class="section-title">About</h2>
-      <div class="bio-narrative">
-        <p>
-          I’m a product leader who works across the full stack of the role, from framing a proposed feature grounded in data and business opportunity for the executive team, to staying in the details of what’s technically possible and what users actually experience with the working teams. I started my career in Finance and Operations at tech startups and scale-ups, which built the foundation I still rely on today: how to think in tradeoffs, how to size opportunity honestly, how to evaluate whether a product direction is actually sustainable, and importantly, how to communicate product strategy in a language that executives and business leaders can understand and buy into.
-        </p>
-        <p>
-          Over the last several years, I’ve built a track record shipping 0-to-1 products across two-sided marketplaces, AI, and consumer platforms. My approach is research-first and data-grounded. I don’t advocate for a direction until I understand the problem well enough to defend the solution to a skeptic. And I care about execution just as much as strategy: the best product thinking doesn’t count if it doesn’t ship, and the best products don’t count if users don’t love them.
-        </p>
-        <p>
-          The thing that keeps the work interesting is that the surface keeps changing. From native apps to conversational AI agents, the definition of what a product even is keeps shifting underneath you. I try to stay deliberately outside my comfort zone, building in spaces that are genuinely new, where the right answer isn’t obvious yet.
-        </p>
-      </div>
-
-      <div class="resume-nested">
-        <p class="section-label">Resume</p>
-        <div class="resume-actions">
-          <a class="resume-download-btn" href="resume.pdf" download="Kaelan_Forgues_Resume.pdf" type="application/pdf">Download resume (PDF)</a>
+      <div class="callout-cards">
+        <div class="callout-card">
+          <span class="callout-icon">◉</span>
+          <div>
+            <span class="callout-label">Currently</span>
+            <span class="callout-text">Senior PM, Lyft Applied AI</span>
+          </div>
         </div>
+        <div class="callout-card">
+          <span class="callout-icon">↗</span>
+          <div>
+            <span class="callout-label">Background</span>
+            <span class="callout-text">Finance &amp; Ops → Product</span>
+          </div>
+        </div>
+        <div class="callout-card">
+          <span class="callout-icon">✦</span>
+          <div>
+            <span class="callout-label">Known for</span>
+            <span class="callout-text">Shipping 0-to-1 AI &amp; consumer products</span>
+          </div>
+        </div>
+      </div>
+      <div class="bio-layout">
+        <div class="bio-main">
+          <div class="bio-narrative">
+            <p>
+              I’m a product leader who works across the full stack of the role, from framing a proposed feature grounded in data and business opportunity for the executive team, to staying in the details of what’s technically possible and what users actually experience with the working teams. I started my career in Finance and Operations at tech startups and scale-ups, which built the foundation I still rely on today: how to think in tradeoffs, how to size opportunity honestly, how to evaluate whether a product direction is actually sustainable, and importantly, how to communicate product strategy in a language that executives and business leaders can understand and buy into.
+            </p>
+            <p>
+              Over the last several years, I’ve built a track record shipping 0-to-1 products across two-sided marketplaces, AI, and consumer platforms. My approach is research-first and data-grounded. I don’t advocate for a direction until I understand the problem well enough to defend the solution to a skeptic. And I care about execution just as much as strategy: the best product thinking doesn’t count if it doesn’t ship, and the best products don’t count if users don’t love them.
+            </p>
+            <p>
+              The thing that keeps the work interesting is that the surface keeps changing. From native apps to conversational AI agents, the definition of what a product even is keeps shifting underneath you. I try to stay deliberately outside my comfort zone, building in spaces that are genuinely new, where the right answer isn’t obvious yet.
+            </p>
+          </div>
+        </div>
+        <aside class="bio-sidebar">
+          <div class="sidebar-meta">
+            <div class="sidebar-row">
+              <span class="sidebar-label">Currently</span>
+              <span class="sidebar-value">Senior PM, Lyft Applied AI</span>
+            </div>
+            <div class="sidebar-row">
+              <span class="sidebar-label">Background</span>
+              <span class="sidebar-value">Finance &amp; Operations → Product</span>
+            </div>
+            <div class="sidebar-row">
+              <span class="sidebar-label">Education</span>
+              <span class="sidebar-value">BCom Finance, McGill 2017</span>
+            </div>
+          </div>
+          <a class="resume-outline-btn" href="resume.pdf" download="Kaelan_Forgues_Resume.pdf" type="application/pdf">Download Resume</a>
+        </aside>
       </div>
     </div>
 
