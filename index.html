@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
+      color-scheme: light;
       --bg: #f7f5f0;
       --bg-elevated: #fffefb;
       --text: #111;
@@ -48,13 +49,15 @@
 
     a.btn-primary,
     a.btn-secondary,
-    a.btn-ghost {
+    a.btn-ghost,
+    .resume-actions > a {
       border-bottom: none;
     }
 
     a.btn-primary:hover,
     a.btn-secondary:hover,
-    a.btn-ghost:hover {
+    a.btn-ghost:hover,
+    .resume-actions > a:hover {
       border-bottom: none;
     }
 
@@ -76,10 +79,17 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      /* Solid rgba avoids Safari issues with color-mix() on older / some WebKit builds */
+      background: rgba(247, 245, 240, 0.92);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
+    }
+
+    @supports (background: color-mix(in srgb, red, blue)) {
+      .site-header {
+        background: color-mix(in srgb, var(--bg) 92%, transparent);
+      }
     }
 
     .header-inner {
@@ -95,6 +105,8 @@
     }
 
     .brand {
+      -webkit-appearance: none;
+      appearance: none;
       font-weight: 600;
       font-size: 0.95rem;
       letter-spacing: -0.02em;
@@ -133,8 +145,9 @@
 
     /* Tab bar */
     .tablist-wrap {
-      flex: 1;
-      min-width: min(100%, 20rem);
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: 100%;
     }
 
     .tablist {
@@ -148,7 +161,9 @@
     }
 
     .tablist button {
+      -webkit-appearance: none;
       appearance: none;
+      margin: 0;
       font-family: inherit;
       font-size: 0.8125rem;
       font-weight: 500;
@@ -212,7 +227,7 @@
     }
 
     .tab-panel[hidden] {
-      display: none;
+      display: none !important;
     }
 
     .section-label {
@@ -256,7 +271,8 @@
       margin-bottom: 1.25rem;
     }
 
-    .btn-primary {
+    .btn-primary,
+    .resume-actions > a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -273,7 +289,8 @@
       transition: opacity 0.15s ease;
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover,
+    .resume-actions > a:hover {
       opacity: 0.88;
       border-bottom-color: var(--text);
     }
@@ -542,10 +559,13 @@
       <h2 class="section-title">Bio</h2>
       <div class="bio-narrative">
         <p>
-          I’m a product leader who moves comfortably between vision and execution — someone who can frame a problem for the business, align executives around a direction, and still stay grounded in what users actually need. My foundation is a Finance degree from <strong>McGill University</strong>, followed by early-career roles in <strong>Finance &amp; Operations</strong> at technology startups and scaleups. That background shaped how I think about tradeoffs, metrics, and sustainable growth.
+          I’m a product leader who works across the full stack of the role, from framing a proposed feature grounded in data and business opportunity for the executive team, to staying in the details of what’s technically possible and what users actually experience with the working teams. I started my career in Finance and Operations at tech startups and scale-ups, which built the foundation I still rely on today: how to think in tradeoffs, how to size opportunity honestly, how to evaluate whether a product direction is actually sustainable, and importantly, how to communicate product strategy in a language that executives and business leaders can understand and buy into.
         </p>
         <p>
-          I’ve built a track record of shipping successful <strong>0-to-1 products</strong> by combining rigorous discovery with empathy for the people on the other side of the experience. I’m as comfortable speaking the language of the <strong>business and executive team</strong> as I am working with design and engineering to get something real into the market.
+          Over the last several years, I’ve built a track record shipping 0-to-1 products across two-sided marketplaces, AI, and consumer platforms. My approach is research-first and data-grounded. I don’t advocate for a direction until I understand the problem well enough to defend the solution to a skeptic. And I care about execution just as much as strategy: the best product thinking doesn’t count if it doesn’t ship, and the best products don’t count if users don’t love them.
+        </p>
+        <p>
+          The thing that keeps the work interesting is that the surface keeps changing. From native apps to conversational AI agents, the definition of what a product even is keeps shifting underneath you. I try to stay deliberately outside my comfort zone, building in spaces that are genuinely new, where the right answer isn’t obvious yet.
         </p>
       </div>
 
@@ -553,7 +573,7 @@
         <p class="section-label">Resume</p>
         <h2 class="section-title">At a glance</h2>
         <div class="resume-actions">
-          <a class="btn-primary" href="#">Download Resume</a>
+          <a href="/resume.pdf" download="Kaelan_Forgues_Resume.pdf">Download Resume</a>
         </div>
         <div class="card-grid cols-3">
           <div class="surface-card">
