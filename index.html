@@ -304,6 +304,11 @@
       color: var(--text);
     }
 
+    .resume-structured {
+      margin-top: 2rem;
+      max-width: 56rem;
+    }
+
     .btn-primary,
     .resume-actions > a {
       display: inline-flex;
@@ -404,18 +409,6 @@
       margin-bottom: 0;
     }
 
-    .section-note {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      max-width: var(--max);
-      margin: 0 0 1.5rem;
-      padding: 0.85rem 1rem;
-      background: rgba(17, 17, 17, 0.03);
-      border-radius: 6px;
-      border-left: 3px solid var(--border);
-    }
-
-    .work-card,
     .project-card {
       background: var(--bg-elevated);
       border: 1px solid var(--border);
@@ -424,37 +417,6 @@
       display: flex;
       flex-direction: column;
       min-height: 100%;
-    }
-
-    .work-card .company {
-      margin: 0 0 0.15rem;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-
-    .work-card .role {
-      margin: 0 0 0.25rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .work-card .period {
-      margin: 0 0 0.85rem;
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-
-    .work-card .desc {
-      margin: 0 0 1.1rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      flex: 1;
-    }
-
-    .work-card .card-actions {
-      margin-top: auto;
     }
 
     .project-card h3 {
@@ -564,9 +526,6 @@
               <button type="button" role="tab" id="tab-bio" aria-selected="true" aria-controls="panel-bio">Bio</button>
             </li>
             <li role="presentation">
-              <button type="button" role="tab" id="tab-past" aria-selected="false" aria-controls="panel-past">Past Work</button>
-            </li>
-            <li role="presentation">
               <button type="button" role="tab" id="tab-projects" aria-selected="false" aria-controls="panel-projects">Projects</button>
             </li>
             <li role="presentation">
@@ -607,51 +566,40 @@
           <p>
             <strong>Background:</strong> 7+ years shipping 0-to-1 products across AI, two-sided marketplaces, and consumer platforms. Started in Finance and Operations, which shapes how I think about tradeoffs, opportunity sizing, and building for sustainable growth.
           </p>
-          <p><strong>Where I’ve worked:</strong></p>
-          <ul>
-            <li><strong>Lyft:</strong> AI strategy, rider experience, conversational AI integrations</li>
-            <li><strong>Loblaw Digital:</strong> PC Optimum loyalty, LLM powered search &amp; discovery</li>
-            <li><strong>Kijiji:</strong> Buyer experience, search relevance, 0-to-1 feature development across the buyer funnel</li>
-          </ul>
           <p>
             <strong>What I’m known for:</strong> Turning ambiguous problems into clear direction and user-focused solutions, whether through AI or other technologies. Comfortable being thrown into the deep end and learning to swim; some of my best work has come from building in spaces where the right answer wasn’t obvious yet.
           </p>
         </div>
-      </div>
-    </div>
-
-    <div class="tab-panel" id="panel-past" role="tabpanel" aria-labelledby="tab-past" hidden>
-      <p class="section-label">Career</p>
-      <h2 class="section-title">Past Work</h2>
-      <p class="section-note">Work samples available upon request, as some deliverables are proprietary or under NDA.</p>
-      <div class="card-grid cols-3">
-        <article class="work-card">
-          <h3 class="company">[Company name]</h3>
-          <p class="role">[Your title]</p>
-          <p class="period">[Start year] to [End year or Present]</p>
-          <p class="desc">[Brief description of scope, impact, or focus. What did you own? What changed because of your work?]</p>
-          <div class="card-actions">
-            <a class="btn-secondary" href="#">View Work</a>
+        <div class="resume-structured">
+          <div class="card-grid cols-3">
+            <div class="surface-card">
+              <h3>Experience</h3>
+              <ul>
+                <li>Senior Product Manager, Lyft: Dec 2025&#8211;Present</li>
+                <li>Senior Product Manager, Loblaw Digital: Mar 2024&#8211;Dec 2025</li>
+                <li>Product Manager, Kijiji: Aug 2021&#8211;Jul 2023</li>
+                <li>Director, eCommerce &amp; Buyer Experience, How To Cake It: Jun 2020&#8211;Jul 2021</li>
+                <li>Business Operations Manager, Connected (Now Thoughtworks): Jan 2019&#8211;Apr 2020</li>
+              </ul>
+            </div>
+            <div class="surface-card">
+              <h3>Education</h3>
+              <ul>
+                <li>Bachelor of Commerce, Major in Finance: McGill University, 2017</li>
+              </ul>
+            </div>
+            <div class="surface-card">
+              <h3>Skills</h3>
+              <ul>
+                <li>0-to-1 Product Strategy</li>
+                <li>AI Integration &amp; Agentic Commerce</li>
+                <li>Experimentation &amp; A/B Testing</li>
+                <li>User Research &amp; Discovery</li>
+                <li>Cross-functional Leadership &amp; Executive Alignment</li>
+              </ul>
+            </div>
           </div>
-        </article>
-        <article class="work-card">
-          <h3 class="company">[Company name]</h3>
-          <p class="role">[Your title]</p>
-          <p class="period">[Start year] to [End year or Present]</p>
-          <p class="desc">[Brief description placeholder.]</p>
-          <div class="card-actions">
-            <a class="btn-secondary" href="#">View Work</a>
-          </div>
-        </article>
-        <article class="work-card">
-          <h3 class="company">[Company name]</h3>
-          <p class="role">[Your title]</p>
-          <p class="period">[Start year] to [End year or Present]</p>
-          <p class="desc">[Brief description placeholder.]</p>
-          <div class="card-actions">
-            <a class="btn-secondary" href="#">View Work</a>
-          </div>
-        </article>
+        </div>
       </div>
     </div>
 
@@ -726,7 +674,6 @@
       var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
       var panels = {
         bio: document.getElementById("panel-bio"),
-        past: document.getElementById("panel-past"),
         projects: document.getElementById("panel-projects"),
         contact: document.getElementById("panel-contact"),
       };
@@ -734,7 +681,6 @@
       function showPanel(id) {
         var map = {
           "tab-bio": "bio",
-          "tab-past": "past",
           "tab-projects": "projects",
           "tab-contact": "contact",
         };
