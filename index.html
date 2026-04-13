@@ -271,6 +271,39 @@
       margin-bottom: 1.25rem;
     }
 
+    .resume-glance {
+      max-width: var(--max);
+    }
+
+    .resume-glance p {
+      margin: 0 0 1rem;
+      color: var(--text);
+    }
+
+    .resume-glance p strong {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .resume-glance > ul {
+      margin: 0 0 1rem;
+      padding-left: 1.25rem;
+    }
+
+    .resume-glance li {
+      margin-bottom: 0.45rem;
+      color: var(--text-muted);
+    }
+
+    .resume-glance li:last-child {
+      margin-bottom: 0;
+    }
+
+    .resume-glance li strong {
+      font-weight: 600;
+      color: var(--text);
+    }
+
     .btn-primary,
     .resume-actions > a {
       display: inline-flex;
@@ -551,7 +584,7 @@
   <main id="main">
     <div class="intro">
       <h1>Kaelan Forgues</h1>
-      <p class="tagline">Product strategy, e-commerce, and personalization — placeholder tagline; edit as you like.</p>
+      <p class="tagline">Product strategy, e-commerce, and personalization (placeholder tagline; edit as you like).</p>
     </div>
 
     <div class="tab-panel" id="panel-bio" role="tabpanel" aria-labelledby="tab-bio">
@@ -575,30 +608,22 @@
         <div class="resume-actions">
           <a href="/resume.pdf" download="Kaelan_Forgues_Resume.pdf">Download Resume</a>
         </div>
-        <div class="card-grid cols-3">
-          <div class="surface-card">
-            <h3>Experience</h3>
-            <ul>
-              <li>[Role, company — dates]</li>
-              <li>[Role, company — dates]</li>
-              <li>[Add bullets or summary lines]</li>
-            </ul>
-          </div>
-          <div class="surface-card">
-            <h3>Education</h3>
-            <ul>
-              <li>Bachelor of Commerce, Finance — McGill University</li>
-              <li>[Additional credentials or programs]</li>
-            </ul>
-          </div>
-          <div class="surface-card">
-            <h3>Skills</h3>
-            <ul>
-              <li>[Product strategy &amp; GTM]</li>
-              <li>[Domain areas — e.g. e-commerce, loyalty]</li>
-              <li>[Tools — analytics, experimentation, etc.]</li>
-            </ul>
-          </div>
+        <div class="resume-glance">
+          <p>
+            <strong>Currently:</strong> Senior Product Manager at Lyft, leading AI strategy within the rider experience and owning product direction for conversational ride-booking integrations across next-generation user surfaces.
+          </p>
+          <p>
+            <strong>Background:</strong> 7+ years shipping 0-to-1 products across AI, two-sided marketplaces, and consumer platforms. Started in Finance and Operations, which shapes how I think about tradeoffs, opportunity sizing, and building for sustainable growth.
+          </p>
+          <p><strong>Where I’ve worked:</strong></p>
+          <ul>
+            <li><strong>Lyft:</strong> AI strategy, rider experience, conversational AI integrations</li>
+            <li><strong>Loblaw Digital:</strong> PC Optimum loyalty, LLM powered search &amp; discovery</li>
+            <li><strong>Kijiji:</strong> Buyer experience, search relevance, 0-to-1 feature development across the buyer funnel</li>
+          </ul>
+          <p>
+            <strong>What I’m known for:</strong> Turning ambiguous problems into clear direction and user-focused solutions, whether through AI or other technologies. Comfortable being thrown into the deep end and learning to swim; some of my best work has come from building in spaces where the right answer wasn’t obvious yet.
+          </p>
         </div>
       </div>
     </div>
@@ -606,12 +631,12 @@
     <div class="tab-panel" id="panel-past" role="tabpanel" aria-labelledby="tab-past" hidden>
       <p class="section-label">Career</p>
       <h2 class="section-title">Past Work</h2>
-      <p class="section-note">Work samples available upon request — some deliverables are proprietary or under NDA.</p>
+      <p class="section-note">Work samples available upon request, as some deliverables are proprietary or under NDA.</p>
       <div class="card-grid cols-3">
         <article class="work-card">
           <h3 class="company">[Company name]</h3>
           <p class="role">[Your title]</p>
-          <p class="period">[Start year] — [End year or Present]</p>
+          <p class="period">[Start year] to [End year or Present]</p>
           <p class="desc">[Brief description of scope, impact, or focus. What did you own? What changed because of your work?]</p>
           <div class="card-actions">
             <a class="btn-secondary" href="#">View Work</a>
@@ -620,7 +645,7 @@
         <article class="work-card">
           <h3 class="company">[Company name]</h3>
           <p class="role">[Your title]</p>
-          <p class="period">[Start year] — [End year or Present]</p>
+          <p class="period">[Start year] to [End year or Present]</p>
           <p class="desc">[Brief description placeholder.]</p>
           <div class="card-actions">
             <a class="btn-secondary" href="#">View Work</a>
@@ -629,7 +654,7 @@
         <article class="work-card">
           <h3 class="company">[Company name]</h3>
           <p class="role">[Your title]</p>
-          <p class="period">[Start year] — [End year or Present]</p>
+          <p class="period">[Start year] to [End year or Present]</p>
           <p class="desc">[Brief description placeholder.]</p>
           <div class="card-actions">
             <a class="btn-secondary" href="#">View Work</a>
@@ -642,7 +667,7 @@
       <p class="section-label">Personal</p>
       <h2 class="section-title">Projects</h2>
       <p style="margin: 0 0 1.5rem; max-width: var(--max); font-size: 0.9rem; color: var(--text-muted);">
-        Side projects and experiments — code and activity on
+        Side projects and experiments, with code and activity on
         <a href="https://github.com/kforgues1" target="_blank" rel="noopener noreferrer">GitHub</a>.
       </p>
       <div class="card-grid cols-3">
@@ -667,7 +692,7 @@
         </article>
         <article class="project-card">
           <h3>[Project name]</h3>
-          <p class="desc">[Optional third project — link to a specific repo later by changing the href above.]</p>
+          <p class="desc">[Optional third project: link to a specific repo later by changing the href above.]</p>
           <div class="tags">
             <span class="tag">[Tag]</span>
             <span class="tag">[Tag]</span>
@@ -683,7 +708,7 @@
       <div class="contact-grid">
         <div class="surface-card contact-card">
           <strong>Email</strong>
-          <p><a href="mailto:you@example.com">you@example.com</a> — replace with your address.</p>
+          <p><a href="mailto:you@example.com">you@example.com</a> (replace with your address).</p>
         </div>
         <div class="surface-card contact-card">
           <strong>LinkedIn</strong>
