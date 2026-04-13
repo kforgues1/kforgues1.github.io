@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kaelan Forgues</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --bg-elevated: #fffefb;
+      --text: #111;
+      --text-muted: #4a4a4a;
+      --border: rgba(17, 17, 17, 0.12);
+      --accent: #111;
+      --max: 42rem;
+      --nav-h: 3.25rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease;
+    }
+
+    a:hover {
+      border-bottom-color: currentColor;
+    }
+
+    .skip {
+      position: absolute;
+      left: -9999px;
+      top: 0.5rem;
+      z-index: 100;
+      padding: 0.5rem 1rem;
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .skip:focus {
+      left: 0.5rem;
+    }
+
+    /* Store-style header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      min-height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: -0.02em;
+      border-bottom: none;
+    }
+
+    .brand:hover {
+      border-bottom: none;
+      opacity: 0.75;
+    }
+
+    .nav-primary {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .nav-primary a {
+      display: block;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: none;
+      color: var(--text);
+      border-radius: 4px;
+    }
+
+    .nav-primary a:hover {
+      background: rgba(17, 17, 17, 0.06);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-ghost {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--text);
+      background: var(--bg);
+    }
+
+    main {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .intro {
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .intro h1 {
+      margin: 0 0 0.35rem;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+
+    .intro .tagline {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: var(--max);
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      margin: 0 0 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .section-title {
+      margin: 0 0 1rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .bio p {
+      margin: 0 0 1rem;
+      max-width: var(--max);
+      color: var(--text);
+    }
+
+    .bio p:last-child {
+      margin-bottom: 0;
+    }
+
+    .bio .note {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .resume-block {
+      max-width: var(--max);
+    }
+
+    .resume-block p {
+      margin: 0 0 1rem;
+      color: var(--text-muted);
+    }
+
+    .resume-placeholder {
+      padding: 1.25rem 1.35rem;
+      background: var(--bg-elevated);
+      border: 1px dashed var(--border);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .resume-placeholder ul {
+      margin: 0.75rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    .resume-placeholder li {
+      margin-bottom: 0.35rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 640px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .project-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .project-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .project-card .desc {
+      margin: 0 0 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      flex: 1;
+    }
+
+    .project-card .highlights-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .project-card ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      font-size: 0.8125rem;
+      color: var(--text);
+    }
+
+    .project-card li {
+      margin-bottom: 0.25rem;
+    }
+
+    .site-footer {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 2.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem 1.25rem;
+    }
+
+    .site-footer a {
+      color: var(--text);
+    }
+
+    @media (max-width: 520px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 0.85rem;
+        padding-bottom: 0.85rem;
+      }
+
+      .nav-primary {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .nav-actions {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#">Kaelan Forgues</a>
+      <nav aria-label="Primary">
+        <ul class="nav-primary">
+          <li><a href="#bio">Bio</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn-ghost" href="https://github.com/kforgues1" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="intro">
+      <h1>Kaelan Forgues</h1>
+      <p class="tagline">Product strategy, e-commerce, and personalization — placeholder tagline; edit as you like.</p>
+    </div>
+
+    <section id="bio" class="bio" aria-labelledby="bio-heading">
+      <p class="section-label">About</p>
+      <h2 id="bio-heading" class="section-title">Bio</h2>
+      <p>
+        I’m a product leader focused on strategy and go-to-market for digital commerce and loyalty. Most recently I’ve worked on e-commerce experiences and programs like PC Optimum, with earlier roles optimizing buyer journeys on marketplaces and in operations.
+      </p>
+      <p>
+        [Add a personal line here — where you live, what you’re building lately, or how you like to work with teams. This site is a single file; swap this paragraph anytime.]
+      </p>
+      <p class="note">
+        Summary adapted from public LinkedIn-style profile details; confirm wording on
+        <a href="https://www.linkedin.com/in/kaelanforgues/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
+      </p>
+    </section>
+
+    <section id="resume" aria-labelledby="resume-heading">
+      <p class="section-label">Experience</p>
+      <h2 id="resume-heading" class="section-title">Resume</h2>
+      <div class="resume-block">
+        <p>
+          [Replace this block with a link to your PDF, or paste highlights below.]
+        </p>
+        <div class="resume-placeholder">
+          <strong>Placeholder — your resume CTA</strong>
+          <ul>
+            <li>[Link: Download PDF]</li>
+            <li>[Or: 2–3 bullet wins you want visitors to see first]</li>
+            <li>[Or: Link to a full LinkedIn PDF export]</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-heading">
+      <p class="section-label">Work</p>
+      <h2 id="projects-heading" class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <h3>[Project title]</h3>
+          <p class="desc">[Short description of the problem, what you shipped, and the outcome. One or two sentences.]</p>
+          <p class="highlights-label">Technical highlights</p>
+          <ul>
+            <li>[Stack or approach — e.g. API design]</li>
+            <li>[Tooling — e.g. analytics, experimentation]</li>
+            <li>[Something you’d want a hiring manager to notice]</li>
+          </ul>
+        </article>
+        <article class="project-card">
+          <h3>[Project title]</h3>
+          <p class="desc">[What it does, who it’s for, and why it mattered.]</p>
+          <p class="highlights-label">Technical highlights</p>
+          <ul>
+            <li>[Highlight one]</li>
+            <li>[Highlight two]</li>
+            <li>[Highlight three]</li>
+          </ul>
+        </article>
+        <article class="project-card">
+          <h3>[Project title]</h3>
+          <p class="desc">[Optional third project — side project, work sample, or case study.]</p>
+          <p class="highlights-label">Technical highlights</p>
+          <ul>
+            <li>[Highlight one]</li>
+            <li>[Highlight two]</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="y"></span> Kaelan Forgues</span>
+    <a href="https://github.com/kforgues1" target="_blank" rel="noopener noreferrer">github.com/kforgues1</a>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
