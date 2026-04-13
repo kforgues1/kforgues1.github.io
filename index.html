@@ -49,13 +49,15 @@
 
     a.btn-secondary,
     a.btn-ghost,
-    a.resume-download-btn {
+    a.resume-download-btn,
+    a.tablist-link {
       border-bottom: none;
     }
 
     a.btn-secondary:hover,
     a.btn-ghost:hover,
-    a.resume-download-btn:hover {
+    a.resume-download-btn:hover,
+    a.tablist-link:hover {
       border-bottom: none;
     }
 
@@ -120,12 +122,6 @@
       opacity: 0.75;
     }
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
     .btn-ghost {
       font-size: 0.8125rem;
       font-weight: 500;
@@ -167,28 +163,59 @@
       font-weight: 500;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      padding: 0.5rem 0.75rem;
-      border: 1px solid transparent;
-      border-radius: 4px;
+      padding: 0.5rem 0.75rem 0.35rem;
+      border: none;
+      border-bottom: 2px solid transparent;
+      border-radius: 0;
       background: transparent;
       color: var(--text-muted);
       cursor: pointer;
-      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      transition: color 0.15s ease, border-color 0.15s ease;
     }
 
     .tablist button:hover {
       color: var(--text);
-      background: rgba(17, 17, 17, 0.05);
+      border-bottom-color: rgba(17, 17, 17, 0.22);
     }
 
     .tablist button[aria-selected="true"] {
       color: var(--text);
-      background: var(--bg-elevated);
-      border-color: var(--border);
-      box-shadow: 0 1px 0 rgba(17, 17, 17, 0.04);
+      background: transparent;
+      border-bottom-color: var(--text);
+    }
+
+    .tablist button[aria-selected="true"]:hover {
+      border-bottom-color: var(--text);
     }
 
     .tablist button:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 2px;
+    }
+
+    /* GitHub sits between Projects and Contact; not a tab (excluded from tab keyboard loop) */
+    .tablist-link {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.5rem 0.75rem 0.35rem;
+      border: none;
+      border-bottom: 2px solid transparent;
+      border-radius: 0;
+      color: var(--text-muted);
+      background: transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .tablist-link:hover {
+      color: var(--text);
+      border-bottom-color: rgba(17, 17, 17, 0.22);
+    }
+
+    .tablist-link:focus-visible {
       outline: 2px solid var(--text);
       outline-offset: 2px;
     }
@@ -263,6 +290,11 @@
       margin-top: 2.5rem;
       padding-top: 2rem;
       border-top: 1px solid var(--border);
+    }
+
+    .resume-nested > .section-label {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
     }
 
     .resume-actions {
@@ -467,10 +499,6 @@
         order: 3;
         width: 100%;
       }
-
-      .nav-actions {
-        align-self: flex-start;
-      }
     }
   </style>
 </head>
@@ -479,24 +507,24 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <button type="button" class="brand" id="brand-home" aria-label="Kaelan Forgues, go to Bio">Kaelan Forgues</button>
+      <button type="button" class="brand" id="brand-home" aria-label="Kaelan Forgues, go to About">Kaelan Forgues</button>
       <div class="tablist-wrap">
         <nav aria-label="Site sections">
-          <ul class="tablist" role="tablist">
+          <ul class="tablist">
             <li role="presentation">
-              <button type="button" role="tab" id="tab-bio" aria-selected="true" aria-controls="panel-bio">Bio</button>
+              <button type="button" role="tab" id="tab-bio" aria-selected="true" aria-controls="panel-bio">About</button>
             </li>
             <li role="presentation">
               <button type="button" role="tab" id="tab-projects" aria-selected="false" aria-controls="panel-projects">Projects</button>
+            </li>
+            <li role="presentation">
+              <a class="tablist-link" href="https://github.com/kforgues1" target="_blank" rel="noopener noreferrer">GitHub</a>
             </li>
             <li role="presentation">
               <button type="button" role="tab" id="tab-contact" aria-selected="false" aria-controls="panel-contact">Contact</button>
             </li>
           </ul>
         </nav>
-      </div>
-      <div class="nav-actions">
-        <a class="btn-ghost" href="https://github.com/kforgues1" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </div>
   </header>
@@ -508,8 +536,7 @@
     </div>
 
     <div class="tab-panel" id="panel-bio" role="tabpanel" aria-labelledby="tab-bio">
-      <p class="section-label">About</p>
-      <h2 class="section-title">Bio</h2>
+      <h2 class="section-title">About</h2>
       <div class="bio-narrative">
         <p>
           I’m a product leader who works across the full stack of the role, from framing a proposed feature grounded in data and business opportunity for the executive team, to staying in the details of what’s technically possible and what users actually experience with the working teams. I started my career in Finance and Operations at tech startups and scale-ups, which built the foundation I still rely on today: how to think in tradeoffs, how to size opportunity honestly, how to evaluate whether a product direction is actually sustainable, and importantly, how to communicate product strategy in a language that executives and business leaders can understand and buy into.
@@ -520,18 +547,10 @@
         <p>
           The thing that keeps the work interesting is that the surface keeps changing. From native apps to conversational AI agents, the definition of what a product even is keeps shifting underneath you. I try to stay deliberately outside my comfort zone, building in spaces that are genuinely new, where the right answer isn’t obvious yet.
         </p>
-        <p>
-          <strong>Currently:</strong> Senior Product Manager at Lyft, leading AI strategy within the rider experience.
-        </p>
-        <p>
-          <strong>Background:</strong> Started in Finance and Operations, which shapes how I think about executive buy-in, opportunity sizing, and building for business growth.
-        </p>
-        <p>
-          <strong>What I’m known for:</strong> Creating clarity where the playbook is thin, or the team is in uncharted territory. Leading with transparency, collaboration, intentional strategic thinking, and humour.
-        </p>
       </div>
 
       <div class="resume-nested">
+        <p class="section-label">Resume</p>
         <div class="resume-actions">
           <a class="resume-download-btn" href="resume.pdf" download="Kaelan_Forgues_Resume.pdf" type="application/pdf">Download resume (PDF)</a>
         </div>
@@ -645,7 +664,7 @@
         document.getElementById("tab-bio").focus();
       });
 
-      var tablist = document.querySelector('[role="tablist"]');
+      var tablist = document.querySelector(".tablist");
       if (tablist) {
         tablist.addEventListener("keydown", function (e) {
           var keys = { ArrowLeft: -1, ArrowRight: 1, Home: "home", End: "end" };
